@@ -1,0 +1,44 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:ccontrol="clr-namespace:IISControls.Controls">
+    <Style TargetType="{x:Type ccontrol:CTextBox}">
+        <Setter Property="NormalImgae" Value="/IISControls;component/Resource/TextBox/text_normal.png"/>
+        <Setter Property="MouseOverImage" Value="/IISControls;component/Resource/TextBox/text_hover.png"/>
+        <Setter Property="PressedImage" Value="/IISControls;component/Resource/TextBox/text_hover.png"/>
+        <Setter Property="Width" Value="80"/>
+        <Setter Property="Height"  Value="26"/>
+        <Setter Property="Foreground" Value="Black"/>
+        <Setter Property="NineGrid" Value="5"/>
+        <Setter Property="KeyboardNavigation.TabNavigation" Value="None"/>
+        <Setter Property="HorizontalContentAlignment" Value="Left"/>
+        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+        <Setter Property="AllowDrop" Value="true"/>
+        <Setter Property="ScrollViewer.PanningMode" Value="VerticalFirst"/>
+        <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
+        <Setter Property="TextMargin" Value="5"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ccontrol:CTextBox}">
+                    <Grid x:Name="border">
+                        <ccontrol:NineImage  x:Name="PART_Back" Stretch="Fill" Source="{TemplateBinding NormalImgae}" NineGrid="{TemplateBinding NineGrid}"/>
+                        <ScrollViewer x:Name="PART_ContentHost" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden" VerticalAlignment="Top" Margin="{TemplateBinding TextMargin}"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter Property="Opacity" TargetName="border" Value="0.56"/>
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="true">
+                            <Setter Property="Source" TargetName="PART_Back" Value="{Binding MouseOverImage, RelativeSource={RelativeSource TemplatedParent}}"/>
+                        </Trigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsKeyboardFocused" Value="True"/>
+                                <Condition Property="IsMouseOver" Value="true"/>
+                            </MultiTrigger.Conditions>
+                            <Setter Property="Source" TargetName="PART_Back" Value="{Binding PressedImage, RelativeSource={RelativeSource TemplatedParent}}"/>
+                        </MultiTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

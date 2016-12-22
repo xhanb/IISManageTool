@@ -1,0 +1,17 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+   >
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/IISControls;component/Themes/CButton.xaml" />
+        <ResourceDictionary Source="/IISControls;component/Themes/WinStyle.xaml" />
+        <ResourceDictionary Source="/IISControls;component/Themes/CTabControl.xaml" />
+        <ResourceDictionary Source="/IISControls;component/Themes/CTabItem.xaml" />
+        <ResourceDictionary Source="/IISControls;component/Themes/ColorTabItem.xaml" />
+        <ResourceDictionary Source="/IISControls;component/Themes/CCheckBox.xaml" />
+        <ResourceDictionary Source="/IISControls;component/Themes/CComboBox.xaml" />
+        <ResourceDictionary Source="/IISControls;component/Themes/CTextBox.xaml" />
+        <ResourceDictionary Source="/IISControls;component/Themes/CScrollBar.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+</ResourceDictionary>

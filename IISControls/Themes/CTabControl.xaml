@@ -1,0 +1,46 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"    xmlns:ccontrol="clr-namespace:IISControls.Controls">
+    <SolidColorBrush x:Key="TabControlNormalBorderBrush" Color="#8C8E94" />
+    <Style TargetType="{x:Type ccontrol:CTabControl}">
+        <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" />
+        <Setter Property="Padding" Value="4,4,4,4" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="BorderBrush" Value="{StaticResource TabControlNormalBorderBrush}" />
+        <Setter Property="Background" Value="#FFF9F9F9" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ccontrol:CTabControl}">
+                    <Grid Name="templateRoot" SnapsToDevicePixels="True" KeyboardNavigation.TabNavigation="Local">
+                        <DockPanel HorizontalAlignment="Stretch" Height="Auto" LastChildFill="True" Margin="0" Grid.Row="0" VerticalAlignment="Stretch" Width="Auto" Grid.RowSpan="1">
+                            <StackPanel Name="HeaderPanel" Height="Auto" VerticalAlignment="Top" Width="Auto" DockPanel.Dock="Top" IsItemsHost="True" Orientation="Horizontal" CanHorizontallyScroll="True" />
+                            <Border Name="ContentPanel" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Width="Auto" DockPanel.Dock="Bottom" Margin="0" Background="{TemplateBinding Background}">
+                                <ContentPresenter Name="PART_SelectedContentHost" ContentSource="SelectedContent" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" Height="Auto" />
+                            </Border>
+                        </DockPanel>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="TabControl.TabStripPlacement" Value="Bottom">
+                            <Setter TargetName="HeaderPanel" Property="DockPanel.Dock" Value="Bottom" />
+                            <Setter TargetName="ContentPanel" Property="DockPanel.Dock" Value="Top" />
+                        </Trigger>
+                        <Trigger Property="TabControl.TabStripPlacement" Value="Left">
+                            <Setter TargetName="HeaderPanel" Property="StackPanel.Orientation" Value="Vertical" />
+                            <Setter TargetName="HeaderPanel" Property="DockPanel.Dock" Value="Left" />
+                            <Setter TargetName="ContentPanel" Property="DockPanel.Dock" Value="Right" />
+                        </Trigger>
+                        <Trigger Property="TabControl.TabStripPlacement" Value="Right">
+                            <Setter TargetName="HeaderPanel" Property="DockPanel.Dock" Value="Right" />
+                            <Setter TargetName="HeaderPanel" Property="StackPanel.Orientation" Value="Vertical" />
+                            <Setter TargetName="ContentPanel" Property="DockPanel.Dock" Value="Left" />
+                        </Trigger>
+                        <Trigger Property="UIElement.IsEnabled" Value="False">
+                            <Setter Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}" Property="Control.Foreground" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>
